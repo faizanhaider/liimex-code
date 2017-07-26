@@ -2,7 +2,7 @@
 
 Using MySql, Node.js and AngularJS for this challenge
 
-Using `js-image-generator` for random images
+Using `js-image-generator` for random images and `sequelize` as ORM and also `express-jwt`
 
 1. Update `config.json` for database
 2. Run `npm install`

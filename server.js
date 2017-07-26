@@ -5,6 +5,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
+var path = require("path");
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -20,7 +21,7 @@ app.use('/login', require('./controllers/login.controller'));
 app.use('/register', require('./controllers/register.controller'));
 app.use('/app', require('./controllers/app.controller'));
 app.use('/api/users', require('./controllers/api/users.controller'));
-
+app.use(express.static(path.join(__dirname, 'public')));
 // make '/app' default route
 app.get('/', function (req, res) {
     return res.redirect('/app');

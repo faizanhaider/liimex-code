@@ -1,8 +1,11 @@
 var config = require('config.json');
 var _ = require('lodash');
+var path = require("path");
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
+var fs = require('fs');
+var imgGen = require('js-image-generator');
 
 module.exports = function(sequelize, Sequelize) {
 
@@ -13,7 +16,8 @@ module.exports = function(sequelize, Sequelize) {
 			firstName: { type: Sequelize.STRING,notEmpty: true},
 			lastName: { type: Sequelize.STRING,notEmpty: true},
 			username: {type:Sequelize.TEXT},
-			hash: {type: Sequelize.TEXT, allowNull: false}
+			hash: {type: Sequelize.TEXT, allowNull: false},
+			img: {type: Sequelize.TEXT}
 	};
     
 
@@ -54,6 +58,7 @@ module.exports = function(sequelize, Sequelize) {
 				}).then(function (user) {
 						if (user) {
 									// return user (without hashed password)
+									user.img = config.root + user.img;
 									deferred.resolve(_.omit(user, 'hash'));
 							} else {
 									// user not found
@@ -83,6 +88,11 @@ module.exports = function(sequelize, Sequelize) {
 										var user = _.omit(userParam, 'password');
 										// add hashed password to user object
 										user.hash = bcrypt.hashSync(userParam.password, 10);
+										var fileName = user.img =  userParam.username +'.jpg';
+										imgGen.generateImage(800, 600, 80, function(err, image) {
+												fs.writeFileSync('public/'+fileName, image.data);
+										});
+
 										return global.db.users.create(user);
 								}
 						}).then(function () {

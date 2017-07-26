@@ -1,0 +1,11 @@
+﻿{
+    "apiUrl": "http://localhost:3000/api",
+    "secret": "Secret-Key could be anything",
+    "db": {
+            "username" : "root",
+            "password": "",
+            "database": "liimex",
+            "host": "127.0.0.1",
+            "port": 3306
+        }
+}

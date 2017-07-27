@@ -1,4 +1,4 @@
-var config = require('config.json');
+import apiUrl from '../config.js';
 import React from 'react';
 import {
   AsyncStorage,
@@ -67,7 +67,7 @@ export default class LoginView extends React.Component {
       }
       // Serialize and post the data
       const json = JSON.stringify(data)
-      fetch(`${config.apiUrl}/users/authenticate`, {
+      fetch(`${apiUrl}/users/authenticate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default class LoginView extends React.Component {
           alert(res.error)
         } else {
           AsyncStorage.setItem('jwt', res.token)
-          return fetch(`${config.apiUrl}/users/current`, {
+          return fetch(`${apiUrl}/users/current`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${res.token}`,

@@ -1,4 +1,4 @@
-var config = require('config.json');
+import apiUrl from '../config.js';
 import React from 'react';
 import {
   ScrollView,
@@ -44,7 +44,7 @@ export default class RegisterView extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log('props', props);
+    
     this.state = {
       value: {
         firstName: '',
@@ -84,7 +84,7 @@ export default class RegisterView extends React.Component {
       }
       // Serialize and post the data
       const json = JSON.stringify(data);
-      fetch(`${config.apiUrl}/users/register`, {
+      fetch(`${apiUrl}/users/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

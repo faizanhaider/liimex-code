@@ -17,3 +17,9 @@ For running `react` app
 4. Run `webpack`
 5. Comment 19 line in `controller/app.controller.js` and un-comment 21 line
 4. Open application in web browser
+
+For running `react ios native` app
+
+1. run `cd app_ios_react` and Update `app_ios_react/config.js` for server connection
+2. Run `npm install`
+3. Run `yarn run ios` to open this app in simulator

@@ -36,7 +36,7 @@ function registerUser(req, res) {
 }
 
 function getCurrentUser(req, res) {
-    global.db.users.getByUsername(req.session.username)
+    global.db.users.getById(req.user.sub)
         .then(function (user) {
             if (user) {
                 res.send(user);

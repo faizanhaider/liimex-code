@@ -25,7 +25,7 @@ module.exports = function(sequelize, Sequelize) {
 	var classMethods = {};
 
 	classMethods.authenticate = authenticate;
-	classMethods.getByUsername = getByUsername;
+	classMethods.getById = getById;
 	classMethods.createUser = createUser;
 
 	function authenticate(username, password) {
@@ -37,7 +37,7 @@ module.exports = function(sequelize, Sequelize) {
 				}).then(function (user) {
 					if (user && bcrypt.compareSync(password, user.hash)) {
 							// authentication successful
-							deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
+							deferred.resolve(jwt.sign({ sub: user.id }, config.secret));
 					} else {
 							// authentication failed
 							deferred.resolve();
@@ -48,12 +48,12 @@ module.exports = function(sequelize, Sequelize) {
 				return deferred.promise;
 		}
 
-		function getByUsername(username) {
+		function getById(id) {
 				var deferred = Q.defer();
 				
 				this.findOne({
 					where: {
-						username: username
+						id: id
 					}
 				}).then(function (user) {
 						if (user) {

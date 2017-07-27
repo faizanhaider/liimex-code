@@ -9,7 +9,7 @@ Using `js-image-generator` for random images and `sequelize` as ORM and also `ex
 3. Run `npm start`
 4. Open application in web browser
 
-For running `react` app
+For running `react/redux` app
 
 1. Update `config.json` for database
 2. Run `npm install`

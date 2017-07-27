@@ -22,4 +22,4 @@ For running `react ios native` app created by using `create-react-native-app app
 
 1. run `cd app_ios_react` and Update `app_ios_react/config.js` for server connection
 2. Run `npm install`
-3. Run `yarn run ios` to open this app in simulator
+3. Run `npm run ios` to open this app in simulator

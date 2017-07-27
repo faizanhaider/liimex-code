@@ -18,7 +18,7 @@ For running `react` app
 5. Comment 19 line in `controller/app.controller.js` and un-comment 21 line
 4. Open application in web browser
 
-For running `react ios native` app
+For running `react ios native` app created by using `create-react-native-app app_ios_react`
 
 1. run `cd app_ios_react` and Update `app_ios_react/config.js` for server connection
 2. Run `npm install`

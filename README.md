@@ -24,4 +24,5 @@ For running `react ios native` app created by using `create-react-native-app app
 2. Run `npm install`
 3. Run `npm run ios` to open this app in simulator
 
+Here is the flow for new ios react native application.
 ![Alt text](./out.gif?raw=true "Optional Title")
